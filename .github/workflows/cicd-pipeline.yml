@@ -37,8 +37,8 @@ jobs:
       
     - name: Create and Switch to New Branch
       run: |
-          git pull
           git checkout -b second-task-branch
+          git pull
           echo "I've changed 'README.md' using GitHub Actions" >> README.md
           git add .
           git commit -m "Update 'README.md' in second-task-branch"
