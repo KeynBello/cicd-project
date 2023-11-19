@@ -46,7 +46,7 @@ jobs:
         GN_TOKEN: ${{ secrets.ACCES_TOKEN }}
 
     - name: Pull changes from the remote repository
-      run: git pull
+      run: git pull origin
 
     - name: Merge changes from the main branch
       run: git merge origin/main
