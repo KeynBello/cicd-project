@@ -42,9 +42,17 @@ jobs:
           echo "I've changed 'README.md' using GitHub Actions" >> README.md
           git add .
           git commit -m "Update 'README.md' in second-task-branch"
-          git push origin second-task-branch
       env:
         GN_TOKEN: ${{ secrets.ACCES_TOKEN }}
+
+    - name: Fetch changes from the remote repository
+      run: git fetch origin
+
+    - name: Merge changes from the main branch
+      run: git merge origin/main
+
+    - name: Push changes to the second-task-branch
+      run: git push origin second-task-branch
     
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v5.0.2
