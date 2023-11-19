@@ -49,7 +49,7 @@ jobs:
       run: git pull origin
 
     - name: Merge changes from the main branch
-      run: git merge origin/main
+      run: git merge origin/second-task-branch
 
     - name: Push changes to the second-task-branch
       run: git push origin second-task-branch
