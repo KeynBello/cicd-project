@@ -32,6 +32,8 @@ jobs:
       
     - name: Create and Switch to New Branch
       run: |
+          git config --global user.email "asynytsia.work@gmail.com"
+          git config --global user.name "Andrii Synytsia"
           git checkout -b second-task-branch
           echo "I've changed 'README.md' using GitHub Actions" >> README.md
           git add .
