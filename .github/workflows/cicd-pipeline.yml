@@ -32,13 +32,13 @@ jobs:
 
     - name: Configure Git
       run: |
+        
         git config --global user.email "asynytsia.work@gmail.com"
         git config --global user.name "Andrii Synytsia"
       
     - name: Create and Switch to New Branch
       run: |
           git checkout -b second-task-branch
-          git pull origin second-task-branch
           echo "I've changed 'README.md' using GitHub Actions" >> README.md
           git add .
           git commit -m "Update 'README.md' in second-task-branch"
