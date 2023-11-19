@@ -29,21 +29,24 @@ jobs:
       
     - name: Run Unit Tests
       run: mvn test
+
+    - name: Configure Git
+      run: |
+        git config --global user.email "asynytsia.work@gmail.com"
+        git config --global user.name "Andrii Synytsia"
       
     - name: Create and Switch to New Branch
       run: |
-          git config --global user.email "asynytsia.work@gmail.com"
-          git config --global user.name "Andrii Synytsia"
           git checkout -b second-task-branch
           echo "I've changed 'README.md' using GitHub Actions" >> README.md
           git add .
           git commit -m "Update 'README.md' in second-task-branch"
           git push origin second-task-branch
-          
+    
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v5.0.2
       with:
-        token: ${{ github.token }}
+        token: ${{ secrets.ACCESS_TOKEN }}
         branch: second-task-branch
         title: "Adding some text in 'README.md' file"
         body: "Pull request for updating 'README.md' file"
