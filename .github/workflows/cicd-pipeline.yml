@@ -57,9 +57,9 @@ jobs:
 
     - name: Debug Information
       run: |
-        gh pr list
-        gh pr view "second-task-branch"
-        gh pr status "second-task-branch"
+        git fetch origin
+        git branch -a
+        git log -n 5 --oneline
       env:
         GH_TOKEN: ${{ secrets.ACCES_TOKEN }}
         
