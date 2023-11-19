@@ -50,8 +50,8 @@ jobs:
       uses: peter-evans/create-pull-request@v5.0.2
       with:
         token: ${{ secrets.ACCES_TOKEN }}
-        branch: main
-        base: second-task-branch
+        branch: second-task-branch
+        base: main
         title: "Adding some text in 'README.md' file"
         body: "Pull request for updating 'README.md' file"
         
@@ -61,3 +61,11 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.ACCES_TOKEN }}
         PR_URL: ${{ steps.createPR.outputs.pull-request-url }}
+        
+    - name: Debug Information
+      run: |
+        gh pr list
+        gh pr view "second-task-branch"
+        gh pr status "second-task-branch"
+    env:
+      GH_TOKEN: ${{ secrets.ACCES_TOKEN }}
