@@ -42,7 +42,7 @@ jobs:
           echo "I've changed 'README.md' using GitHub Actions" >> README.md
           git add .
           git commit -m "Update 'README.md' in second-task-branch"
-          # git push origin second-task-branch
+          git push origin second-task-branch
       env:
         GN_TOKEN: ${{ secrets.ACCES_TOKEN }}
     
