@@ -51,7 +51,7 @@ jobs:
       with:
         token: ${{ secrets.ACCES_TOKEN }}
         branch: second-task-branch
-        base: second-task-branch
+        base: main
         title: "Adding some text in 'README.md' file"
         body: "Pull request for updating 'README.md' file"
         
