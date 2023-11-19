@@ -68,4 +68,4 @@ jobs:
         gh pr merge --auto --merge "$PR_URL"
       env:
         GH_TOKEN: ${{ secrets.ACCES_TOKEN }}
-        PR_URL: ${{ steps.createPR.outputs.pull-request-url }}
+        PR_URL: ${{ github.event.pull_request.url }}
