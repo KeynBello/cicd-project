@@ -49,7 +49,7 @@ jobs:
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v5.0.2
       with:
-        token: ${{ secrets.ACCESS_TOKEN }}
+        token: ${{ secrets.ACCES_TOKEN }}
         branch: second-task-branch
         title: "Adding some text in 'README.md' file"
         body: "Pull request for updating 'README.md' file"
