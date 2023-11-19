@@ -55,9 +55,7 @@ jobs:
         body: "Pull request for updating 'README.md' file"
         
     - name: Accept Pull Request
-      uses: peter-evans/merge-pull-request@v3
+      uses: coderstats/github-action-merged-pull-requests@1.0.0
       with:
-        pull-request-number: ${{ github.event.number }}
-        merge-commit-message: 'Merge pull request #1 from Andrii'
-      env:
-        GITHUB_TOKEN: ${{ secrets.ACCES_TOKEN }}
+        token: ${{ github.event.number }}
+        output: ./MERGED_PULL_REQUESTS.md
