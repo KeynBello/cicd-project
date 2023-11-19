@@ -43,6 +43,8 @@ jobs:
           git add .
           git commit -m "Update 'README.md' in second-task-branch"
           git push origin second-task-branch
+      env:
+        GN_TOKEN: ${{ secrets.ACCES_TOKEN }}
     
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v5.0.2
