@@ -65,7 +65,13 @@ jobs:
         
     - name: Accept Pull Request
       run: |
-        gh pr merge --auto --merge "$PR_URL"
+        PR_URL="${{ github.event.pull_request.url }}"
+        API_URL="${{ github.api_url }}/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/merge"
+    
+        curl -X PUT \
+          -H "Accept: application/vnd.github.v3+json" \
+         -H "Authorization: token ${{ secrets.ACCES_TOKEN }}" \
+         -d '{"commit_title": "Merge pull request #${{ github.event.pull_request.number }}"}' \
+         "$API_URL"
       env:
-        GH_TOKEN: ${{ secrets.ACCES_TOKEN }}
-        PR_URL: ${{ github.event.pull_request.url }}
+        ACCES_TOKEN: ${{ secrets.ACCES_TOKEN }}
