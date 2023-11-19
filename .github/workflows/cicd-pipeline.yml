@@ -45,8 +45,8 @@ jobs:
       env:
         GN_TOKEN: ${{ secrets.ACCES_TOKEN }}
 
-    - name: Pull changes from the remote repository
-      run: git pull origin second-task-branch
+    - name: Fetch changes from the remote repository
+      run: git fetch origin
 
     - name: Merge changes from the main branch
       run: git merge origin/second-task-branch
