@@ -32,7 +32,7 @@ jobs:
 
     - name: Configure Git
       run: |
-        git remote set-url origin "https://github.com/${{ secrets.ACCESS_TOKEN }}@github.com/KeynBello/cicd-project.git"
+        git remote set-url origin "https://github.com/${{ secrets.ACCESS_TOKEN }}/KeynBello/cicd-project.git"
         git config --global user.email "asynytsia.work@gmail.com"
         git config --global user.name "Andrii Synytsia"
       
