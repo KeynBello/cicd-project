@@ -45,8 +45,8 @@ jobs:
       env:
         GN_TOKEN: ${{ secrets.ACCES_TOKEN }}
 
-    - name: Fetch changes from the remote repository
-      run: git fetch origin
+    - name: Pull changes from the remote repository
+      run: git pull
 
     - name: Merge changes from the main branch
       run: git merge origin/main
