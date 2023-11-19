@@ -1,6 +1,10 @@
 name: GitHub Actions SoftServe
 on:
   push:
+  pull_request:
+    types:
+      - opened
+      - synchronize
   workflow_dispatch:
   
 jobs:
