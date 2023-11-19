@@ -17,11 +17,31 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
+        
     - name: Clone Repository
       uses: actions/checkout@v4
+      
     - name: Download Dependencies
       run: mvn dependency:resolve -B
+      
     - name: Build Maven project
       run: mvn clean install
+      
     - name: Run Unit Tests
       run: mvn test
+      
+    - name: Create and Switch to New Branch
+      run: |
+          git checkout -b second-task-branch
+          echo "I've changed 'README.md' using GitHub Actions" >> README.md
+          git add .
+          git commit -m "Update 'README.md' in second-task-branch"
+          git push origin second-task-branch
+          
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v5.0.2
+      with:
+        token: ${{ github.token }}
+        branch: second-task-branch
+        title: "Adding some text in 'README.md' file"
+        body: "Pull request for updating 'README.md' file"
