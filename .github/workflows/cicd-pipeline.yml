@@ -56,7 +56,7 @@ jobs:
         body: "Pull request for updating 'README.md' file"
         
     - name: Accept Pull Request
-      uses: coderstats/github-action-merged-pull-requests@1.0.0
-      with:
-        token: ${{ github.event.number }}
-        output: ./MERGED_PULL_REQUESTS.md
+      run: |
+        gh pr merge --auto --merge "$PR_URL"
+      env:
+        PR_URL: ${{ steps.createPR.outputs.pull-request-url }}
