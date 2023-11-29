@@ -75,3 +75,10 @@ jobs:
          "$API_URL"
       env:
         ACCES_TOKEN: ${{ secrets.ACCES_TOKEN }}
+        
+    - name: Build and analyze
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      run: mvn -B verify sonar:sonar -Dsonar.login=admin -Dsonar.password=password
