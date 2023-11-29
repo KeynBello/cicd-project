@@ -35,46 +35,6 @@ jobs:
         
         git config --global user.email "asynytsia.work@gmail.com"
         git config --global user.name "Andrii Synytsia"
-      
-    - name: Create and Switch to New Branch
-      run: |
-          git checkout -b second-task-branch
-          echo "I've changed 'README.md' using GitHub Actions" >> README.md
-          git add .
-          git commit -m "Update 'README.md' in second-task-branch"
-          git push origin second-task-branch
-      env:
-        GN_TOKEN: ${{ secrets.ACCES_TOKEN }}
-        
-    - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v5.0.2
-      with:
-        token: ${{ secrets.ACCES_TOKEN }}
-        branch: second-task-branch
-        base: main
-        title: "Adding some text in 'README.md' file"
-        body: "Pull request for updating 'README.md' file"
-
-    - name: Debug Information
-      run: |
-        git fetch origin
-        git branch -a
-        git log -n 5 --oneline
-      env:
-        GH_TOKEN: ${{ secrets.ACCES_TOKEN }}
-        
-    - name: Accept Pull Request
-      run: |
-        PR_URL="${{ github.event.pull_request.url }}"
-        API_URL="${{ github.api_url }}/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/merge"
-    
-        curl -X PUT \
-          -H "Accept: application/vnd.github.v3+json" \
-         -H "Authorization: token ${{ secrets.ACCES_TOKEN }}" \
-         -d '{"commit_title": "Merge pull request #${{ github.event.pull_request.number }}"}' \
-         "$API_URL"
-      env:
-        ACCES_TOKEN: ${{ secrets.ACCES_TOKEN }}
         
     - name: Build and analyze
       env:
